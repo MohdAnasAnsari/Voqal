@@ -1,6 +1,47 @@
+
 # Voqal — AI Voice Agent Platform
 
 Voqal is a production-ready AI-powered voice agent platform that handles inbound phone calls, qualifies leads in real time using a large language model, and syncs results to CRM systems. It ships with a full-stack React dashboard, a FastAPI backend, PostgreSQL persistence, Redis caching, and Kubernetes manifests for cloud deployment.
+
+---
+
+<img width="1889" height="948" alt="Screenshot 2026-05-25 173745" src="https://github.com/user-attachments/assets/5fb4cb7b-029c-438b-8d2b-8a7b5e9f1982" />
+<img width="1893" height="954" alt="Screenshot 2026-05-25 173802" src="https://github.com/user-attachments/assets/99855b1b-ae93-44d2-a815-ceaa72c19f50" />
+<img width="1910" height="930" alt="Screenshot 2026-05-25 173821" src="https://github.com/user-attachments/assets/9866bfd8-0f25-4b7b-9c20-f9e1a3db25e2" />
+<img width="1883" height="943" alt="image" src="https://github.com/user-attachments/assets/7794474e-289b-4066-b37d-907c7ad9056a" />
+<img width="1857" height="939" alt="image" src="https://github.com/user-attachments/assets/c1f11691-f278-4cdf-950f-d597bb47fa16" />
+<img width="1885" height="950" alt="image" src="https://github.com/user-attachments/assets/57e774d6-d2f6-47cc-960f-5cc7202dbf4a" />
+<img width="1898" height="764" alt="image" src="https://github.com/user-attachments/assets/7cbc4bb6-3d38-4164-a552-8605963fb702" />
+<img width="1889" height="751" alt="image" src="https://github.com/user-attachments/assets/fd547b1c-2da3-49d0-ac65-8501083d7c30" />
+<img width="1887" height="869" alt="image" src="https://github.com/user-attachments/assets/934eaf50-6b04-40a5-a575-3916754f0b5b" />
+<img width="1885" height="957" alt="image" src="https://github.com/user-attachments/assets/b78cbeab-7a49-42ae-8d69-17f3245c2f70" />
+<img width="1873" height="932" alt="image" src="https://github.com/user-attachments/assets/27fb19fb-7dc6-4492-beb6-9e3b68401d30" />
+<img width="1888" height="909" alt="image" src="https://github.com/user-attachments/assets/e9fdaf5b-68f6-49f8-ad78-dd0d4e6002ab" />
+<img width="1891" height="956" alt="image" src="https://github.com/user-attachments/assets/9ab951b5-cbb7-411f-a709-04fee266ca5a" />
+<img width="1509" height="830" alt="image" src="https://github.com/user-attachments/assets/ab590ff2-acf3-4de7-ae79-794df839edae" />
+<img width="1505" height="876" alt="image" src="https://github.com/user-attachments/assets/5f86c745-4243-48b8-a809-3f7ef2c7840d" />
+<img width="1521" height="881" alt="image" src="https://github.com/user-attachments/assets/894a7472-2c63-4a3d-be62-0e08fbfb7b8e" />
+<img width="1512" height="766" alt="image" src="https://github.com/user-attachments/assets/8d9ac9d6-cc03-4f42-a4b4-2f1c24ff49f2" />
+<img width="1545" height="861" alt="image" src="https://github.com/user-attachments/assets/9843c19f-e38c-4a92-ab67-e7e97d508823" />
+<img width="1523" height="874" alt="image" src="https://github.com/user-attachments/assets/64066457-dd9a-4f35-9ac8-7b5ce6f2e81c" />
+<img width="1562" height="876" alt="image" src="https://github.com/user-attachments/assets/855b98f1-1d8e-47f8-9ff0-15ad314cddf0" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
