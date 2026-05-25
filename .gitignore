@@ -1,0 +1,40 @@
+# ── Environment / secrets ────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Python ───────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Node / Frontend ───────────────────────────────────────────────
+node_modules/
+dist/
+.cache/
+*.local
+
+# ── Vite ─────────────────────────────────────────────────────────
+frontend/dist/
+frontend/.cache/
+
+# ── OS / Editor ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Logs ─────────────────────────────────────────────────────────
+*.log
+logs/

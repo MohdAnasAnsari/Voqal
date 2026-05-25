@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voqal-backend
+  namespace: voice-ai
+  labels:
+    app: voqal-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: voqal-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: voqal-backend
+    spec:
+      containers:
+        - name: backend
+          image: voqal-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            # From ConfigMap
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: voqal-config
+                  key: APP_ENV
+            - name: APP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: voqal-config
+                  key: APP_PORT
+            - name: DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: voqal-config
+                  key: DEBUG
+            - name: REDIS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: voqal-config
+                  key: REDIS_URL
+            - name: GROQ_MODEL
+              valueFrom:
+                configMapKeyRef:
+                  name: voqal-config
+                  key: GROQ_MODEL
+            # From Secret
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: voqal-secrets
+                  key: SECRET_KEY
+            - name: ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: voqal-secrets
+                  key: ENCRYPTION_KEY
+            - name: GROQ_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: voqal-secrets
+                  key: GROQ_API_KEY
+            - name: HUBSPOT_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: voqal-secrets
+                  key: HUBSPOT_API_KEY
+            # Constructed DATABASE_URL from secrets
+            - name: DATABASE_URL
+              value: "postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@voqal-postgres:5432/$(POSTGRES_DB)"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: voqal-secrets
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: voqal-secrets
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: voqal-secrets
+                  key: POSTGRES_DB
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "1000m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3

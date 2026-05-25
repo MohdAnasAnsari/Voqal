@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: voqal-config
+  namespace: voice-ai
+data:
+  # Application
+  APP_ENV: "production"
+  APP_HOST: "0.0.0.0"
+  APP_PORT: "8000"
+  DEBUG: "false"
+
+  # Database (non-secret connection params)
+  DB_POOL_SIZE: "10"
+  DB_MAX_OVERFLOW: "20"
+  DB_POOL_TIMEOUT: "30"
+
+  # Redis
+  REDIS_URL: "redis://voqal-redis:6379/0"
+
+  # Groq model
+  GROQ_MODEL: "llama-3.3-70b-versatile"
+
+  # CRM
+  SALESFORCE_INSTANCE_URL: ""

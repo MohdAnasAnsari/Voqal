@@ -1,0 +1,205 @@
+/* ============================================================
+   System of a Truth — Visual Primitives
+   Reusable motif classes — blueprint grid, corner registration
+   brackets, plus markers, dimension lines, verification badge.
+   ============================================================ */
+
+/* ---------- GRID BACKGROUND ---------- */
+.sot-grid {
+  background: var(--sot-grid-bg);
+  position: relative;
+}
+.sot-grid-tight { --sot-grid-size: 24px; }
+.sot-grid-loose { --sot-grid-size: 56px; }
+
+/* Plus-sign markers laid out across the grid corners (decorative).
+   Apply .sot-plus-field to a positioned container. */
+.sot-plus-field { position: relative; }
+.sot-plus-field::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.10) 0.5px, transparent 0.6px),
+    radial-gradient(circle, rgba(255,255,255,.10) 0.5px, transparent 0.6px);
+  background-position: 0 0, 20px 20px;
+  background-size: 40px 40px, 40px 40px;
+  opacity: .6;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.4));
+}
+
+/* A single "+" SVG marker — drop in absolutely-positioned. */
+.sot-plus {
+  width: 12px; height: 12px;
+  display: inline-block;
+  color: var(--sot-fg-4);
+  background:
+    linear-gradient(currentColor, currentColor) center/100% 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center/1px 100% no-repeat;
+}
+
+/* ---------- CORNER REGISTRATION BRACKETS ----------
+   Apply .sot-brackets to any positioned element.
+   The four L-shapes mark the four corners like a printer registration. */
+.sot-brackets {
+  position: relative;
+}
+.sot-brackets > .b {
+  position: absolute;
+  width: 14px; height: 14px;
+  color: var(--sot-construction);
+  pointer-events: none;
+}
+.sot-brackets > .b::before,
+.sot-brackets > .b::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.sot-brackets > .b::before { width: 100%; height: 2px; }
+.sot-brackets > .b::after  { width: 2px; height: 100%; }
+.sot-brackets > .b.tl { top: -1px; left: -1px; }
+.sot-brackets > .b.tl::before { top: 0; left: 0; }
+.sot-brackets > .b.tl::after  { top: 0; left: 0; }
+.sot-brackets > .b.tr { top: -1px; right: -1px; }
+.sot-brackets > .b.tr::before { top: 0; right: 0; }
+.sot-brackets > .b.tr::after  { top: 0; right: 0; }
+.sot-brackets > .b.bl { bottom: -1px; left: -1px; }
+.sot-brackets > .b.bl::before { bottom: 0; left: 0; }
+.sot-brackets > .b.bl::after  { bottom: 0; left: 0; }
+.sot-brackets > .b.br { bottom: -1px; right: -1px; }
+.sot-brackets > .b.br::before { bottom: 0; right: 0; }
+.sot-brackets > .b.br::after  { bottom: 0; right: 0; }
+.sot-brackets.neutral > .b { color: var(--sot-line-strong); }
+.sot-brackets.verify > .b  { color: var(--sot-verify); }
+.sot-brackets.truth  > .b  { color: var(--sot-truth); }
+
+/* ---------- DIMENSION LINE ----------
+   <span class="sot-dim">42mm</span>  — flanked by tick + arrow */
+.sot-dim {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sot-font-mono);
+  font-size: var(--sot-fs-mono-sm);
+  color: var(--sot-fg-3);
+  letter-spacing: var(--sot-tracking-mono);
+}
+.sot-dim::before, .sot-dim::after {
+  content: "";
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--sot-fg-4);
+}
+.sot-dim::before { box-shadow: 0 -3px 0 -1px var(--sot-fg-4), 0 3px 0 -1px var(--sot-fg-4); }
+.sot-dim::after  { box-shadow: 0 -3px 0 -1px var(--sot-fg-4), 0 3px 0 -1px var(--sot-fg-4); }
+
+/* ---------- VERIFICATION INDICATORS ---------- */
+
+/* The Blue Check — circular, X/Twitter style.
+   Sized via font-size; 1em diameter. */
+.sot-check {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.2em; height: 1.2em;
+  background: var(--sot-verify);
+  color: var(--sot-white);
+  border-radius: var(--sot-r-pill);
+  vertical-align: -0.18em;
+  font-size: 1em;
+  flex: none;
+}
+.sot-check svg { width: 0.7em; height: 0.7em; display: block; }
+
+/* SOURCE OF TRUTH pill — green capsule with mono label */
+.sot-sot-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 8px 3px 6px;
+  background: var(--sot-truth-soft);
+  border: 1px solid var(--sot-truth);
+  color: var(--sot-truth);
+  border-radius: var(--sot-r-pill);
+  font-family: var(--sot-font-mono);
+  font-size: var(--sot-fs-mono-sm);
+  letter-spacing: var(--sot-tracking-tag);
+  text-transform: uppercase;
+}
+.sot-sot-pill::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--sot-truth);
+  border-radius: 999px;
+  box-shadow: 0 0 8px var(--sot-truth);
+}
+
+/* ---------- CARD ---------- */
+.sot-card {
+  background: var(--sot-surface-1);
+  border: 1px solid var(--sot-line);
+  border-radius: var(--sot-r-2);
+  padding: var(--sot-s-6);
+  position: relative;
+}
+.sot-card.flat { background: transparent; }
+.sot-card.raised { background: var(--sot-surface-2); border-color: var(--sot-line-strong); }
+
+/* ---------- BUTTON ---------- */
+.sot-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  font-family: var(--sot-font-mono);
+  font-size: var(--sot-fs-mono-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--sot-tracking-tag);
+  color: var(--sot-fg-1);
+  background: var(--sot-surface-2);
+  border: 1px solid var(--sot-line-strong);
+  border-radius: var(--sot-r-2);
+  cursor: pointer;
+  transition: background var(--sot-dur-fast) var(--sot-ease),
+              border-color var(--sot-dur-fast) var(--sot-ease),
+              transform var(--sot-dur-fast) var(--sot-ease);
+}
+.sot-btn:hover { background: var(--sot-surface-3); border-color: var(--sot-fg-4); }
+.sot-btn:active { transform: translateY(1px); }
+.sot-btn.primary {
+  background: var(--sot-white); color: var(--sot-black); border-color: var(--sot-white);
+}
+.sot-btn.primary:hover { background: var(--sot-fg-2); border-color: var(--sot-fg-2); }
+.sot-btn.verify {
+  background: var(--sot-verify); color: var(--sot-white); border-color: var(--sot-verify);
+}
+.sot-btn.verify:hover { filter: brightness(1.1); }
+.sot-btn.ghost { background: transparent; border-color: var(--sot-line); color: var(--sot-fg-2); }
+.sot-btn.ghost:hover { color: var(--sot-fg-1); border-color: var(--sot-fg-4); }
+
+/* ---------- FIELD ---------- */
+.sot-field {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  background: var(--sot-ink);
+  border: 1px solid var(--sot-line-strong);
+  border-radius: var(--sot-r-2);
+  color: var(--sot-fg-1);
+  font-family: var(--sot-font-text);
+  font-size: var(--sot-fs-body);
+  outline: none;
+  transition: border-color var(--sot-dur-fast) var(--sot-ease);
+}
+.sot-field:focus { border-color: var(--sot-verify); box-shadow: 0 0 0 3px var(--sot-verify-soft); }
+.sot-field::placeholder { color: var(--sot-fg-4); }
+
+/* ---------- HORIZONTAL HAIRLINE w/ orange tick (deck motif) ---------- */
+.sot-rule {
+  position: relative;
+  height: 1px;
+  background: var(--sot-line-strong);
+  margin: var(--sot-s-6) 0;
+}
+.sot-rule::before {
+  content: "";
+  position: absolute; left: 0; top: -3px;
+  width: 48px; height: 7px;
+  background: var(--sot-construction);
+}
